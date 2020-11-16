@@ -1,0 +1,36 @@
+---
+title: "Leaflet Quito map"
+author: "Carlos Andres Pillajo"
+date: "11/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Developing data products
+
+##  Instructions:
+
+Create a web page using R Markdown that features a map created with Leaflet. Host your webpage on either GitHub Pages, RPubs, or NeoCities. Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. 
+
+## Submission
+
+The next map shows and example of a map from my city Quito, Ecuador. Markers represent the principal urban parks from the city.
+
+```{r warning=FALSE}
+library(leaflet)
+my_map <- leaflet() %>%
+  addTiles() %>%
+addMarkers(lat=-0.16145497082457894, lng=-78.47787996303607)
+parksLatLong <- data.frame(
+lat = c(-0.182834, -0.140591, -0.18011468816008858),
+lng = c(-78.484319, -78.48831195120508, -78.46698742150272),
+popup = c("La Carolina", "Bicentenario", "Metropolitano"))
+parksLatLong %>%
+leaflet() %>%
+addTiles() %>%
+addMarkers()
+
+```
